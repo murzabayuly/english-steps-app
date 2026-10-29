@@ -1,5 +1,5 @@
 // English Steps service worker: works offline with the last loaded version
-const CACHE = "english-steps-v1";
+const CACHE = "english-steps-v2";
 const SHELL = ["/", "/manifest.webmanifest", "/icon-192.png", "/icon-512.png"];
 self.addEventListener("install", (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", (e) => {
