@@ -16,8 +16,15 @@ const pool = DATABASE_URL
       connectionString: DATABASE_URL,
       ssl: process.env.PGSSL === "1" ? { rejectUnauthorized: false } : false,
       max: 5,
+      idleTimeoutMillis: 20000,
+      connectionTimeoutMillis: 15000,
+      keepAlive: true,
     })
   : null;
+// An idle connection dropped by the database must not crash the server
+if (pool) pool.on("error", (e) => console.error("DB pool error:", e.message));
+process.on("unhandledRejection", (e) => console.error("Unhandled rejection:", e && e.message ? e.message : e));
+process.on("uncaughtException", (e) => console.error("Uncaught exception:", e && e.stack ? e.stack : e));
 
 async function migrate() {
   if (!pool) return;
@@ -55,6 +62,14 @@ async function migrate() {
 }
 
 const app = express();
+// Every async route: errors go to the error handler instead of crashing the process
+for (const m of ["get", "post", "put", "delete"]) {
+  const orig = app[m].bind(app);
+  app[m] = (path, ...handlers) => (handlers.length === 0 ? orig(path)
+    : orig(path, ...handlers.map((h) => (typeof h === "function" && h.length < 4 ? (req, res, next) => {
+        try { const r = h(req, res, next); if (r && typeof r.catch === "function") r.catch(next); } catch (e) { next(e); }
+      } : h))));
+}
 app.set("trust proxy", 1);
 // When the site has moved, send every visitor to the new address
 if (process.env.REDIRECT_TO) {
@@ -113,6 +128,7 @@ const publicUser = (u) => ({ username: u.username, display_name: u.display_name,
 
 // simple in-memory rate limit for auth endpoints
 const hits = new Map();
+setInterval(() => { const now = Date.now(); for (const [k, v] of hits) if (!v.some((t) => now - t < 10 * 60 * 1000)) hits.delete(k); }, 10 * 60 * 1000).unref();
 function limited(req) {
   const key = req.ip + req.path;
   const now = Date.now();
@@ -121,7 +137,8 @@ function limited(req) {
   hits.set(key, arr);
   return arr.length > 20;
 }
-function needDb(req, res, next) {
+async function needDb(req, res, next) {
+  for (let i = 0; pool && !dbReady && i < 16; i++) await new Promise((r) => setTimeout(r, 500));
   if (pool && !dbReady) return res.status(503).json({ error: "База данных запускается, попробуйте через минуту / Database is starting, try again in a minute" });
   if (!pool) return res.status(503).json({ error: "Database is not configured" });
   next();
@@ -130,7 +147,7 @@ function needDb(req, res, next) {
 // --- routes ---
 app.get("/api/health", async (req, res) => {
   let db = false;
-  if (pool) { try { await pool.query("SELECT 1"); db = true; } catch (e) { db = false; } }
+  if (pool && dbReady) { try { await pool.query("SELECT 1"); db = true; } catch (e) { db = false; } }
   res.json({ ok: true, db, time: new Date().toISOString() });
 });
 
@@ -197,11 +214,27 @@ app.put("/api/progress", needDb, async (req, res) => {
   if (!user) return res.status(401).json({ error: "Not logged in" });
   const p = req.body && req.body.progress;
   if (!p || typeof p !== "object" || Array.isArray(p)) return res.status(400).json({ error: "Bad progress" });
-  const data = { ex: p.ex || {}, hw: p.hw || {}, test: typeof p.test === "string" ? p.test.slice(0, 4) : null, skin: typeof p.skin === "string" ? p.skin.slice(0, 16) : null };
+  const cur = (await getProgress(user.id)) || {};
+  const ex = {};
+  const inEx = p.ex && typeof p.ex === "object" ? p.ex : {};
+  for (const k of new Set([...Object.keys(cur.ex || {}), ...Object.keys(inEx)])) {
+    if (k.length > 60) continue;
+    const a = (cur.ex || {})[k] || {}, b = inEx[k] || {};
+    ex[k] = {};
+    for (const i of new Set([...Object.keys(a), ...Object.keys(b)])) {
+      if (!/^\d{1,3}$/.test(i)) continue;
+      ex[k][i] = a[i] === true || b[i] === true ? true : (b[i] !== undefined ? !!b[i] : !!a[i]);
+    }
+  }
+  const hw = Object.assign({}, cur.hw || {});
+  for (const [k, v] of Object.entries(p.hw && typeof p.hw === "object" ? p.hw : {})) if (k.length <= 80) hw[k] = !!v;
+  const data = { ex, hw,
+    test: typeof p.test === "string" ? p.test.slice(0, 4) : (cur.test || null),
+    skin: typeof p.skin === "string" ? p.skin.slice(0, 16) : (cur.skin || null) };
   await pool.query(
     `INSERT INTO ${q("progress")} (user_id, data, updated_at) VALUES ($1, $2, now())
      ON CONFLICT (user_id) DO UPDATE SET data = EXCLUDED.data, updated_at = now()`, [user.id, data]);
-  res.json({ ok: true });
+  res.json({ ok: true, progress: data });
 });
 
 
@@ -329,23 +362,51 @@ async function setupTelegramBot() {
     await tg("setMyDescription", { description: "Ступени английского: грамматика, упражнения с проверкой, домашние задания и видео с вопросами для уровней A1–C1. Нажмите «Открыть», чтобы начать." });
     await tg("setWebhook", { url: `${SITE_URL}/api/tg/webhook`, secret_token: TG_SECRET, allowed_updates: ["message"], drop_pending_updates: true });
     console.log("Telegram bot configured for", SITE_URL);
-  } catch (e) { console.error("Telegram setup failed", e.message); }
+    setInterval(async () => {   // re-check every 30 minutes that the bot still points to this site
+      try {
+        const info = await tg("getWebhookInfo", {});
+        const want = `${SITE_URL}/api/tg/webhook`;
+        if (info.ok && info.result && info.result.url !== want) {
+          console.log("Telegram webhook was", info.result.url, "- restoring");
+          await tg("setWebhook", { url: want, secret_token: TG_SECRET, allowed_updates: ["message"] });
+          await tg("setChatMenuButton", { menu_button: { type: "web_app", text: "Открыть", web_app: { url: SITE_URL } } });
+        }
+      } catch (e) {}
+    }, 30 * 60 * 1000).unref();
+  } catch (e) { console.error("Telegram setup failed, retrying in 1 min:", e.message); setTimeout(setupTelegramBot, 60000); }
 }
 
 app.use("/api", (req, res) => res.status(404).json({ error: "Not found" }));
 app.get("/privacy", (req, res) => res.sendFile(path.join(__dirname, "public", "privacy.html")));
 app.get("/terms", (req, res) => res.sendFile(path.join(__dirname, "public", "terms.html")));
-app.use(express.static(path.join(__dirname, "public"), { maxAge: "5m" }));
-app.get("*", (req, res) => res.sendFile(path.join(__dirname, "public", "index.html")));
+app.use(express.static(path.join(__dirname, "public"), {
+  maxAge: "7d",
+  setHeaders: (res, file) => {
+    if (/\.(html|webmanifest)$/.test(file) || file.endsWith("sw.js")) res.set("Cache-Control", "no-cache");
+  },
+}));
+app.get("*", (req, res) => { res.set("Cache-Control", "no-cache"); res.sendFile(path.join(__dirname, "public", "index.html")); });
+app.use((err, req, res, next) => {
+  console.error("Request error:", req.method, req.path, err && err.message);
+  if (res.headersSent) return;
+  const dbDown = err && (/ECONNREFUSED|ETIMEDOUT|ENOTFOUND|ECONNRESET|timeout|terminat|Connection/i.test(String(err.code) + " " + err.message));
+  res.status(err && err.type === "entity.too.large" ? 413 : dbDown ? 503 : 500)
+    .json({ error: dbDown ? "База данных временно недоступна, попробуйте через минуту / Database is temporarily unavailable" : "Ошибка сервера, попробуйте ещё раз / Server error, try again" });
+});
 
-let dbReady = false;
+let dbReady = false, migrateTries = 0;
 async function migrateWithRetry() {
   if (!pool) return;
   try { await migrate(); dbReady = true; console.log("Database ready"); await require("./copy")(pool, SCHEMA); }
-  catch (e) { console.error("Database not ready, retrying in 30s:", e.message); setTimeout(migrateWithRetry, 30000); }
+  catch (e) { migrateTries++; const wait = migrateTries < 6 ? 5000 : 30000; console.error(`Database not ready, retrying in ${wait / 1000}s:`, e.message); setTimeout(migrateWithRetry, wait); }
 }
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`English Steps listening on ${PORT} (db: ${pool ? "on" : "off"})`);
   migrateWithRetry();
   if (!process.env.REDIRECT_TO) setupTelegramBot();
+});
+
+process.on("SIGTERM", () => {
+  server.close(() => { (pool ? pool.end() : Promise.resolve()).finally(() => process.exit(0)); });
+  setTimeout(() => process.exit(0), 8000).unref();
 });
