@@ -15,7 +15,7 @@ testTitle:"Тест на уровень",testIntro:"15 вопросов от A1 
 finish:"Узнать мой уровень",score:"Верных ответов",startAt:"Начните с уровня",fastTip:", а темы, которые знаете, проходите быстро — сразу через упражнения",goLevel:"Перейти к уровню",
 footer:"Видео принадлежат их авторам и открываются на YouTube.",saveLocal:"Прогресс сохраняется в этом браузере. Войдите, чтобы он сохранялся в аккаунте.",saveCloud:"Прогресс сохраняется в вашем аккаунте.",
 authTitleIn:"Вход",authTitleUp:"Регистрация",user:"Логин",pass:"Пароль",name:"Ваше имя",haveAcc:"Уже есть аккаунт? Войти",noAcc:"Нет аккаунта? Зарегистрироваться",
-submitIn:"Войти",submitUp:"Создать аккаунт",close:"Закрыть",errShort:"Логин от 3 символов, пароль от 6.",saved:"Сохранено",hello:"Привет",themes:"Тема",or:"или с логином и паролем",social:"Быстрый вход",guest:"Гость",menu:"Меню",back:"Назад",mProfile:"Профиль",mProgress:"Прогресс",mSettings:"Настройки",saveBtn:"Сохранить",byPass:"Логин и пароль",loginWith:"Способ входа",since:"С нами с",levelNow:"Уровень по тесту",stTopics:"темы пройдены",stEx:"упражнений верно",stHw:"домашек сделано",stLessons:"уроков курса",stTopicsShort:"тем",testRes:"Результат теста на уровень",theme:"Тема оформления",language:"Язык",introAnim:"Анимация при входе",introDesc:"Показывать сердечки с приветствием",gateSubIn:"Войдите, чтобы прогресс сохранялся на любом устройстве",install:"Установить приложение",installIos:"На iPhone: нажмите «Поделиться» внизу Safari, затем «На экран «Домой»».",installOther:"Откройте меню браузера (⋮) и выберите «Установить приложение» или «Добавить на главный экран».",installed:"Приложение уже установлено",openBot:"Открыть в Telegram",gateSubUp:"Создайте аккаунт — это займёт полминуты"},
+submitIn:"Войти",submitUp:"Создать аккаунт",close:"Закрыть",errShort:"Логин от 3 символов, пароль от 6.",saved:"Сохранено",hello:"Привет",themes:"Тема",or:"или с логином и паролем",social:"Быстрый вход",guest:"Гость",menu:"Меню",back:"Назад",mProfile:"Профиль",mProgress:"Прогресс",mSettings:"Настройки",saveBtn:"Сохранить",byPass:"Логин и пароль",loginWith:"Способ входа",since:"С нами с",levelNow:"Уровень по тесту",stTopics:"темы пройдены",stEx:"упражнений верно",stHw:"домашек сделано",stLessons:"уроков курса",stTopicsShort:"тем",testRes:"Результат теста на уровень",theme:"Тема оформления",language:"Язык",introAnim:"Анимация при входе",introDesc:"Показывать сердечки с приветствием",gateSubIn:"Войдите, чтобы прогресс сохранялся на любом устройстве",install:"Установить приложение",netErr:"Нет связи с сервером. Проверьте интернет и попробуйте ещё раз.",waking:"Сайт просыпается, подождите несколько секунд…",serverDown:"Сервер сейчас не отвечает. Можно заниматься без входа — прогресс сохранится на этом устройстве.",guest2:"Продолжить без входа",installIos:"На iPhone: нажмите «Поделиться» внизу Safari, затем «На экран «Домой»».",installOther:"Откройте меню браузера (⋮) и выберите «Установить приложение» или «Добавить на главный экран».",installed:"Приложение уже установлено",openBot:"Открыть в Telegram",gateSubUp:"Создайте аккаунт — это займёт полминуты"},
 en:{brand:"English Steps",tagline:"A1 → C1: grammar, exercises, homework, videos",test:"Take the placement test",testShort:"Test",login:"Log in",logout:"Log out",
 tTopics:"Topics & grammar",tVideos:"Videos with questions",tCourse:"Course programme",done:"Exercises completed",
 theory:"Theory",ex:"Exercises",hw:"Homework",findVid:"Find video lessons on this topic on YouTube",
@@ -31,7 +31,7 @@ testTitle:"Placement test",testIntro:"15 questions from A1 to C1. Answer without
 finish:"Show my level",score:"Correct answers",startAt:"Start at level",fastTip:" and go through topics you already know quickly, straight to the exercises",goLevel:"Go to level",
 footer:"Videos belong to their authors and open on YouTube.",saveLocal:"Progress is saved in this browser. Log in to save it to your account.",saveCloud:"Progress is saved to your account.",
 authTitleIn:"Log in",authTitleUp:"Sign up",user:"Username",pass:"Password",name:"Your name",haveAcc:"Already have an account? Log in",noAcc:"No account? Sign up",
-submitIn:"Log in",submitUp:"Create account",close:"Close",errShort:"Username needs 3+ characters, password 6+.",saved:"Saved",hello:"Hi",themes:"Topic",or:"or with username and password",social:"Quick sign-in",guest:"Guest",menu:"Menu",back:"Back",mProfile:"Profile",mProgress:"Progress",mSettings:"Settings",saveBtn:"Save",byPass:"Username and password",loginWith:"Sign-in method",since:"Member since",levelNow:"Level from the test",stTopics:"topics done",stEx:"exercises correct",stHw:"homework done",stLessons:"course lessons",stTopicsShort:"topics",testRes:"Placement test result",theme:"Theme",language:"Language",introAnim:"Welcome animation",introDesc:"Show the hearts greeting",gateSubIn:"Log in to keep your progress on any device",install:"Install the app",installIos:"On iPhone: tap «Share» at the bottom of Safari, then «Add to Home Screen».",installOther:"Open the browser menu (⋮) and choose «Install app» or «Add to Home screen».",installed:"The app is already installed",openBot:"Open in Telegram",gateSubUp:"Create an account — it takes half a minute"}
+submitIn:"Log in",submitUp:"Create account",close:"Close",errShort:"Username needs 3+ characters, password 6+.",saved:"Saved",hello:"Hi",themes:"Topic",or:"or with username and password",social:"Quick sign-in",guest:"Guest",menu:"Menu",back:"Back",mProfile:"Profile",mProgress:"Progress",mSettings:"Settings",saveBtn:"Save",byPass:"Username and password",loginWith:"Sign-in method",since:"Member since",levelNow:"Level from the test",stTopics:"topics done",stEx:"exercises correct",stHw:"homework done",stLessons:"course lessons",stTopicsShort:"topics",testRes:"Placement test result",theme:"Theme",language:"Language",introAnim:"Welcome animation",introDesc:"Show the hearts greeting",gateSubIn:"Log in to keep your progress on any device",install:"Install the app",netErr:"No connection to the server. Check the internet and try again.",waking:"The site is waking up, wait a few seconds…",serverDown:"The server is not responding right now. You can study without signing in — progress is saved on this device.",guest2:"Continue without signing in",installIos:"On iPhone: tap «Share» at the bottom of Safari, then «Add to Home Screen».",installOther:"Open the browser menu (⋮) and choose «Install app» or «Add to Home screen».",installed:"The app is already installed",openBot:"Open in Telegram",gateSubUp:"Create an account — it takes half a minute"}
 };
 let LANG="ru"; try{LANG=localStorage.getItem("stupeni-lang")||"ru";}catch(e){}
 const T=k=>UI[LANG][k]||UI.ru[k]||k;
@@ -65,8 +65,24 @@ let S={ex:{},hw:{},test:null};
 try{const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(S,JSON.parse(raw));}catch(e){}
 let ME=null, API=false, syncTimer=null;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} if(ME){clearTimeout(syncTimer);syncTimer=setTimeout(pushProgress,800);}}
-async function api(path,opts){const r=await fetch(path,Object.assign({credentials:"same-origin",headers:{"Content-Type":"application/json"}},opts||{}));const j=await r.json().catch(()=>({}));if(!r.ok) throw new Error(j.error||("HTTP "+r.status));return j;}
-async function pushProgress(){try{await api("/api/progress",{method:"PUT",body:JSON.stringify({progress:S})});}catch(e){}}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function api(path,opts){
+  const ctl=typeof AbortController!=="undefined"?new AbortController():null; const to=setTimeout(()=>ctl&&ctl.abort(),25000);
+  let r; try{ r=await fetch(path,Object.assign({credentials:"same-origin",headers:{"Content-Type":"application/json"},signal:ctl&&ctl.signal},opts||{})); }
+  catch(e){ const er=new Error(T("netErr")); er.retry=true; throw er; } finally{ clearTimeout(to); }
+  const ct=r.headers.get("content-type")||""; let j=null;
+  if(ct.includes("application/json")) j=await r.json().catch(()=>null);
+  if(!j){ const er=new Error(T("waking")); er.retry=true; throw er; }   // Render shows an HTML page while the server wakes up
+  if(!r.ok){ const er=new Error(j.error||("HTTP "+r.status)); er.status=r.status; er.retry=r.status===503||r.status>=502; throw er; }
+  return j;
+}
+async function apiRetry(path,opts,tries){ for(let i=0;;i++){ try{ return await api(path,opts); }catch(e){ if(!e.retry||i>=(tries||8)) throw e; await sleep(Math.min(1500*(i+1),6000)); } } }
+let pushFailed=false;
+async function pushProgress(){ if(!ME) return; try{ const r=await apiRetry("/api/progress",{method:"PUT",body:JSON.stringify({progress:S})},3); pushFailed=false; if(r&&r.progress){ mergeProgress(r.progress); try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} } }catch(e){ pushFailed=true; } }
+function flushProgress(){ if(!ME) return; clearTimeout(syncTimer); try{ fetch("/api/progress",{method:"PUT",keepalive:true,credentials:"same-origin",headers:{"Content-Type":"application/json"},body:JSON.stringify({progress:S})}); }catch(e){} }
+addEventListener("pagehide",flushProgress);
+document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="hidden") flushProgress(); });
+addEventListener("online",()=>{ if(pushFailed) pushProgress(); });
 function mergeProgress(server){
   if(!server) return; const m={ex:{},hw:{},test:server.test||S.test};
   const exKeys=new Set([...Object.keys(S.ex||{}),...Object.keys(server.ex||{})]);
@@ -260,7 +276,7 @@ function renderTest(){
 let CFG={googleClientId:null,telegramBot:null};
 function loadScript(src,attrs,parent){return new Promise((ok,fail)=>{const sc=document.createElement("script");sc.src=src;sc.async=true;Object.entries(attrs||{}).forEach(([k,v])=>sc.setAttribute(k,v));sc.onload=ok;sc.onerror=fail;(parent||document.head).appendChild(sc);});}
 async function socialPost(path,body){
-  try{const r=await api(path,{method:"POST",body:JSON.stringify(body)});ME=r.user;mergeProgress(r.progress);save();await pushProgress();closeAuth();renderHeader();route();}
+  try{const r=await apiRetry(path,{method:"POST",body:JSON.stringify(body)},4);ME=r.user;mergeProgress(r.progress);save();await pushProgress();closeAuth();renderHeader();route();}
   catch(e){const el=$("#soc-err");if(el) el.textContent=e.message;}
 }
 let gisReady=null;
@@ -292,8 +308,8 @@ async function installApp(){
 }
 
 // ---------- gate: sign-in screen after the intro ----------
-let authMode="in", introDone=false, authChecked=false;
-function maybeGate(){ if(introDone&&authChecked&&API&&!ME) showGate(); }
+let authMode="in", introDone=false, authChecked=false, serverTrouble=false, guestMode=false;
+function maybeGate(){ if(introDone&&authChecked&&API&&!ME&&!guestMode) showGate(); }
 function showGate(mode){ authMode=mode||authMode; $("#gate").hidden=false; document.body.classList.add("locked"); renderGate(); }
 function hideGate(){ $("#gate").hidden=true; document.body.classList.remove("locked"); }
 const closeAuth=hideGate;
@@ -310,24 +326,35 @@ function renderGate(){
     <p class="err" id="au-err" aria-live="polite"></p>
     <button class="btn primary big" type="submit">${up?T("submitUp"):T("submitIn")}</button>
   </form>
-  <button class="linkbtn switch" id="authSwitch">${up?T("haveAcc"):T("noAcc")}</button>`;
+  <button class="linkbtn switch" id="authSwitch">${up?T("haveAcc"):T("noAcc")}</button>
+  ${serverTrouble?`<p class="note">${T("serverDown")}</p><button class="linkbtn switch" id="guestBtn">${T("guest2")}</button>`:""}`;
+  const gb=$("#guestBtn"); if(gb) gb.onclick=()=>{guestMode=true;hideGate();};
   $("#gLang").onclick=()=>{setLang(LANG==="ru"?"en":"ru");renderGate();};
   $("#authSwitch").onclick=()=>{authMode=up?"in":"up";renderGate();};
   mountSocial();
   $("#authForm").onsubmit=async e=>{e.preventDefault();
     const username=$("#au-user").value.trim(), password=$("#au-pass").value, display_name=up?$("#au-name").value.trim():undefined;
     if(username.length<3||password.length<6){$("#au-err").textContent=T("errShort");return;}
-    try{const r=await api(up?"/api/register":"/api/login",{method:"POST",body:JSON.stringify({username,password,display_name})});
+    const btn=$("#authForm button[type=submit]"); if(btn.disabled) return; btn.disabled=true; $("#au-err").textContent="";
+    try{const r=await apiRetry(up?"/api/register":"/api/login",{method:"POST",body:JSON.stringify({username,password,display_name})},4);
       ME=r.user; mergeProgress(r.progress); save(); await pushProgress(); hideGate(); renderHeader(); route();
-    }catch(err){$("#au-err").textContent=err.message;}
+    }catch(err){$("#au-err").textContent=err.message;}finally{btn.disabled=false;}
   };
 }
 async function logout(){try{await api("/api/logout",{method:"POST"});}catch(e){} ME=null; S={ex:{},hw:{},test:null}; try{localStorage.removeItem(KEY);}catch(e){} closeDrawer(); renderHeader(); route(); if(API) showGate("in");}
 async function initAuth(){
-  try{const h=await fetch("/api/health",{credentials:"same-origin"});API=h.ok&&(await h.json()).ok===true;}catch(e){API=false;}
-  if(API){try{CFG=await api("/api/config");}catch(e){}}
-  if(API){try{const r=await api("/api/me");if(r.user){ME=r.user;mergeProgress(r.progress);try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}pushProgress();}}catch(e){}}
-  if(API&&!ME&&TGA&&CFG.telegramBot){try{const r=await api("/api/auth/telegram-webapp",{method:"POST",body:JSON.stringify({initData:TGA.initData})});ME=r.user;mergeProgress(r.progress);save();await pushProgress();}catch(e){}}
+  // The server may be waking up (free hosting): keep trying for about a minute before giving up.
+  API=false;
+  for(let i=0;i<14&&!API;i++){
+    try{ const r=await fetch("/api/health",{credentials:"same-origin",cache:"no-store"}); const ct=r.headers.get("content-type")||"";
+      if(r.ok&&ct.includes("json")){ const j=await r.json(); if(j&&j.ok===true){ API=true; break; } }
+      else if(r.status===404) break; // static copy of the page without a server (preview)
+    }catch(e){ if(location.protocol==="file:") break; }
+    await sleep(Math.min(1500*(i+1),5000));
+  }
+  if(API){try{CFG=await apiRetry("/api/config",null,4);}catch(e){}}
+  if(API){try{const r=await apiRetry("/api/me",null,10);if(r.user){ME=r.user;mergeProgress(r.progress);try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}pushProgress();}}catch(e){serverTrouble=true;}}
+  if(API&&!ME&&TGA&&CFG.telegramBot){try{const r=await apiRetry("/api/auth/telegram-webapp",{method:"POST",body:JSON.stringify({initData:TGA.initData})},6);ME=r.user;mergeProgress(r.progress);save();await pushProgress();}catch(e){}}
   authChecked=true; renderHeader(); route(); maybeGate();
 }
 function setLang(l){LANG=l;try{localStorage.setItem("stupeni-lang",LANG);}catch(e){}renderHeader();route();}
@@ -377,7 +404,7 @@ function renderDrawer(){
   $("#drX").onclick=closeDrawer; const bk=$("#drBack"); if(bk) bk.onclick=()=>{drawerView="menu";renderDrawer();};
   box.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{drawerView=b.dataset.go;renderDrawer();});
   box.querySelectorAll("[data-act]").forEach(b=>b.onclick=()=>{const a=b.dataset.act;if(a==="test"){closeDrawer();go("test");}else if(a==="logout")logout();else if(a==="login"){closeDrawer();showGate("in");}else if(a==="install"){installApp().then(msg=>{const n=$("#instNote");if(msg&&n){n.textContent=msg;n.hidden=false;}});}});
-  box.querySelectorAll(".lvrow").forEach(b=>b.onclick=()=>{closeDrawer();view.tab="topics";go(b.dataset.lv.toLowerCase());});
+  box.querySelectorAll(".lvrow").forEach(b=>b.onclick=()=>{closeDrawer();view.tab="topics";const h=b.dataset.lv.toLowerCase();if(location.hash.slice(1).toLowerCase()===h){view.level=b.dataset.lv;renderLadder();renderLevel();}else go(h);});
   box.querySelectorAll(".skinopt").forEach(b=>b.onclick=()=>{applySkin(b.dataset.s,true);renderDrawer();});
   box.querySelectorAll(".seg2 button").forEach(b=>b.onclick=()=>{setLang(b.dataset.l);renderDrawer();});
   const it=$("#introTgl"); if(it) it.onchange=()=>{try{localStorage.setItem("stupeni-intro",it.checked?"on":"off");}catch(e){}};
