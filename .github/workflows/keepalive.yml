@@ -1,8 +1,8 @@
-name: Wake up the site every hour
+name: Keep the site awake
 
 on:
   schedule:
-    - cron: "7 * * * *"   # every hour at :07 (UTC)
+    - cron: "*/10 * * * *"   # every 10 minutes: Render free sleeps after 15 min without visits
   workflow_dispatch: {}
 
 jobs:
